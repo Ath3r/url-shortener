@@ -4,12 +4,73 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bulmaswatch/0.8.1/lumen/bulmaswatch.min.css"
+			integrity="sha512-eO9jZg3Wuuu2fR+YGIhHAM6FYzf2v771mKh9GMXrUrrbitTeX2wbUeX6dj+srXcaQIXQP5ZO0lZdohXYjF6PrA=="
+			crossorigin="anonymous"
+		/>
 		<link rel="stylesheet" href="styles.css" />
 		<title>URL Shortener</title>
 	</head>
 	<body>
-		<header>
-			<h1>Short urls for your overlong urls</h1>
-		</header>
+		<section class="hero is-medium is-primary is-bold">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title">URL Shortener for your complicated URLs</h1>
+				</div>
+			</div>
+		</section>
+		<main id="app">
+			<form v-if="!success" @submit.prevent="createUrl()">
+				<div v-if="error" class="notification is-danger">{{error}}</div>
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">URL</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<p class="control">
+								<input
+									v-model="url"
+									class="input is-large"
+									type="text"
+									placeholder="http://example.com"
+									required
+								/>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">Short Url</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<p class="control">
+								<input
+									v-model="shotUrl"
+									class="input is-large"
+									type="text"
+									placeholder="short-url"
+									required
+								/>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="short-button">
+					<button type="submit" class="button is-large is-success">Get!</button>
+				</div>
+			</form>
+			<h1 v-if="success" class="title is-1" style="text-align: center">
+				<a :href="'/' + name" target="_blank"
+					>https://localhost:5000/{{name}}</a
+				>
+			</h1>
+		</main>
+		<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+		<script src="app.js"></script>
 	</body>
 </html>

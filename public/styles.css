@@ -8,8 +8,11 @@ body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1 {
-	margin: 1rem;
+main {
+	width: 80%;
+	margin: 2em auto 0 auto;
+}
+
+.short-button {
 	text-align: center;
-	color: red;
 }

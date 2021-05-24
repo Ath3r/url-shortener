@@ -39,10 +39,8 @@ router.get('/:id', async (req, res, next) => {
 	const { id: shortUrl } = req.params;
 	try {
 		const url = await urls.findOne({ shortUrl });
-		console.log(url);
 		if (url) {
-			console.log(url);
-			res.redirect(url.url);
+			return res.redirect(url.url);
 		}
 		res.redirect(`/?error=${shotUrl} not found`);
 	} catch (error) {
