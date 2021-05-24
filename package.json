@@ -2,10 +2,10 @@
 	"name": "server",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/index.js",
+	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon src/index.js",
-		"start": "nodemon src/index.js"
+		"dev": "nodemon index.js",
+		"start": "nodemon index.js"
 	},
 	"keywords": [],
 	"author": "Ather Hussain",
@@ -15,7 +15,9 @@
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"helmet": "^4.6.0",
+		"monk": "^7.3.4",
 		"morgan": "^1.10.0",
+		"nanoid": "^3.1.23",
 		"yup": "^0.32.9"
 	},
 	"devDependencies": {
