@@ -8,8 +8,8 @@
 		"start": "nodemon src/index.js"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"author": "Ather Hussain",
+	"license": "MIT",
 	"dependencies": {
 		"cors": "^2.8.5",
 		"dotenv": "^10.0.0",

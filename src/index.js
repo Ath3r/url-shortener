@@ -4,8 +4,11 @@ const cors = require('cors');
 const morgan = require('morgan');
 require('dotenv').config();
 const { errorHandler, notFound } = require('../middleware/middleware');
+const main = require('./shortener/main');
 
 const app = express();
+
+app.use(express.static('public'));
 
 app.use(cors());
 
@@ -20,6 +23,8 @@ app.get('/', (req, res) => {
 		route: 'GET req for main route',
 	});
 });
+
+app.use('/', main);
 
 app.use(notFound);
 app.use(errorHandler);
