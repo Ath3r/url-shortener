@@ -1,8 +1,6 @@
 //Route not found handler
 const notFound = (req, res, next) => {
-	const error = new Error(`Not Found - ${req.originalUrl}`);
-	res.statusCode = 404;
-	next(error);
+	res.render('404');
 };
 
 //All routes error handler
@@ -10,11 +8,9 @@ const notFound = (req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (error, req, res, next) => {
 	const statusCode = res.statusCode !== 200 ? 500 : res.statusCode;
-	res.status(statusCode).json({
-		error: error.message,
-		// eslint-disable-next-line no-undef
-		stack: process.env.NODE_ENV == 'production' ? '' : error.stack,
-	});
+	res
+		.status(statusCode)
+		.render('main', { error: error.message, shortUrl: null });
 };
 
 module.exports = {

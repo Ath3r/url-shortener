@@ -17,13 +17,15 @@
 		<section class="hero is-medium is-primary is-bold">
 			<div class="hero-body">
 				<div class="container">
-					<h1 class="title">URL Shortener for your complicated URLs</h1>
+					<h1 class="title">URL Shortener for your complex URLs</h1>
 				</div>
 			</div>
 		</section>
 		<main id="app">
-			<form v-if="!success" @submit.prevent="createUrl()">
-				<div v-if="error" class="notification is-danger">{{error}}</div>
+			<form action="/url" method="POST" onsubmit="submit();">
+				<% if(error){ %>
+				<div v-if="error" class="notification is-danger"><%= error %></div>
+				<% }%>
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
 						<label class="label">URL</label>
@@ -32,7 +34,7 @@
 						<div class="field">
 							<p class="control">
 								<input
-									v-model="url"
+									name="url"
 									class="input is-large"
 									type="text"
 									placeholder="http://example.com"
@@ -50,7 +52,7 @@
 						<div class="field">
 							<p class="control">
 								<input
-									v-model="shotUrl"
+									name="shortUrl"
 									class="input is-large"
 									type="text"
 									placeholder="short-url"
@@ -64,13 +66,18 @@
 					<button type="submit" class="button is-large is-success">Get!</button>
 				</div>
 			</form>
-			<h1 v-if="success" class="title is-1" style="text-align: center">
+			<% if(shortUrl){ %>
+			<h3
+				v-if="success"
+				class="subtitle is-3"
+				style="text-align: center; padding: 4rem 2rem"
+			>
 				<a :href="'/' + name" target="_blank"
-					>https://localhost:5000/{{name}}</a
+					>http://localhost:3000/url/<%= shortUrl %></a
 				>
-			</h1>
+			</h3>
+			<% }%>
 		</main>
-		<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
-		<script src="app.js"></script>
+		<script type="text/javascript" src="/script.js"></script>
 	</body>
 </html>
